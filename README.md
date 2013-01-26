@@ -14,6 +14,7 @@ I'm not sure the best way to lay out the directory structure yet, so my first st
 /assets
     \ stylesheets
     \ javascripts
+    \ images <this is missing at the moment>
 /public
 ```
 
