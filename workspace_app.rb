@@ -7,8 +7,18 @@ class ScssEngine < Sinatra::Base
   end
 end
 
+class JsEngine < Sinatra::Base
+  set :views,   File.dirname(__FILE__) + '/../assets/javascripts'
+
+  get '/javascripts/*.js' do
+    filename = File.join(settings.views, params[:splat]) + '.js'
+    send_file filename, type: 'text/javascript'
+  end
+end
+
 class WorkspaceApp < Sinatra::Base
   use ScssEngine
+  use JsEngine
   set :views,   File.dirname(__FILE__) + '/../templates'
 
   error 404 do
