@@ -10,12 +10,12 @@ I'm not sure the best way to lay out the directory structure yet, so my first st
 
 ```
 /workspace <you create this folder>
-/workspace_app <the cloned repo>
-/assets
-    \ stylesheets
-    \ javascripts
-    \ images <this is missing at the moment>
-/public
+    \ workspace_app <the cloned repo>
+    \ assets
+        \ stylesheets
+        \ javascripts
+        \ images <this is missing at the moment>
+    \ public
 ```
 
 I'm trying to separate the templates and assets from the app itself, but this approach seems pretty flawed (question: how do you commit your experiments in the 'workspace' folder without affecting the 'workspace_app' folder inside it).
