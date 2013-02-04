@@ -16,10 +16,22 @@ class JsEngine < Sinatra::Base
   end
 end
 
+class ImagesEngine < Sinatra::Base
+  set :views,   File.dirname(__FILE__) + '/../assets/images'
+
+  get '/images/*' do
+    filename = File.join(settings.views, params[:splat])
+    send_file filename
+  end
+end
+
 class WorkspaceApp < Sinatra::Base
   use ScssEngine
   use JsEngine
-  set :views,   File.dirname(__FILE__) + '/../templates'
+  use ImagesEngine
+
+  set :public_folder, File.dirname(__FILE__) + '/../public'
+  set :views,         File.dirname(__FILE__) + '/../templates'
 
   error 404 do
     'Page not found'
@@ -32,9 +44,11 @@ class WorkspaceApp < Sinatra::Base
     end
 
     template = params[:template] || 'index.html'
+    puts params[:splat]
     view_path  = File.join(settings.views, params[:splat])
 
     unless File.exists?(File.join(view_path, "#{template}.haml"))
+      puts File.join(view_path, "#{template}.haml")
       raise Sinatra::NotFound
     end
 

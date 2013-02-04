@@ -14,7 +14,7 @@ I'm not sure the best way to lay out the directory structure yet, so my first st
     \ assets
         \ stylesheets
         \ javascripts
-        \ images <this is missing at the moment>
+        \ images
     \ public
 ```
 
@@ -25,6 +25,8 @@ I'm trying to separate the templates and assets from the app itself, but this ap
 - Figure out directory structure / means of running the app that allows the user to commit their assets folder without conflicting with the workspace app
 - Alter the way .js files are hosted so that we can reuse it for images (ideally served from /assets/images)
 - Check for gaping security holes caused by the 'accept paths from the params'
+- Base layout file (templates/layout.haml) should either be mandatory and generated, or optional. Also, should be called layout.html.haml to be consistent with other files
+- deal with favicon better -- push missing requests through to 'public'?
 
 ## Getting started:
 
